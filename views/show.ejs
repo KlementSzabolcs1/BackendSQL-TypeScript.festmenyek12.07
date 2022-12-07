@@ -8,25 +8,18 @@
 </head>
 <body>
     <h1 style="text-align: center;">
-        Festmények
+        <%= painting.title %>
     </h1>
-
-           Festmény neve: 
-
-           <%= painting.title %> <br>
-
+        <p style="text-align: center;">
            Készítés dátuma: 
-
            <%= painting.year %> <br>
-
            Ki van-e állítva? 
-
            <% if (painting.on_display) { %>
             Igen
            <% } else { %>
             Nem
             <% } %>
-    
+        </p>
 
 </body>
 </html>

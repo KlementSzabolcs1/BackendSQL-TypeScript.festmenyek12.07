@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Query, Render } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Redirect, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import db from './db';
+import { PaintingDto } from './painting.dto';
 
 @Controller()
 export class AppController {
@@ -21,6 +22,25 @@ export class AppController {
     };
   }
 
+  @Get('paintings/new')
+    @Render('form')
+    newPaintingForm() {
+      return {};
+    }
+
+  @Post('paintings/new')
+  @Redirect('show')
+  async newPainting(@Body() painting: PaintingDto){
+    painting.on_display = painting.on_display == 1;
+    const [result]: any = await db.execute(
+      'INSERT INTO paintings (title, year, on_display) VALUES (?, ?, ?)',
+      [ painting.title, painting.year, painting.on_display ]
+    );
+    return {
+      url: '/paintings/' + result.insertId,
+    };
+  }
+
   @Get('paintings/:id')
   @Render('show')
   async showPainting(@Param('id') id: number){
@@ -30,4 +50,6 @@ export class AppController {
     );
     return { painting: rows[0] };
   }
+
+  
 }
