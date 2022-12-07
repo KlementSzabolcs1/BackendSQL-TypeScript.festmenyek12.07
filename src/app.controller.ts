@@ -10,7 +10,7 @@ export class AppController {
   @Render('list')
   async listPaintings(@Query('year') year = 1990) {
     const [ rows ] = await db.execute(
-      'SELECT title FROM paintings WHERE year > ?',
+      'SELECT id, title FROM paintings WHERE year > ?',
       [ year ]
       );
 
@@ -22,11 +22,12 @@ export class AppController {
   }
 
   @Get('paintings/:id')
+  @Render('show')
   async showPainting(@Param('id') id: number){
     const [ rows ] = await db.execute(
       'SELECT title, year, on_display FROM paintings WHERE id = ?',
       [ id ]
     );
-    return { paintings: rows[0] };
+    return { painting: rows[0] };
   }
 }

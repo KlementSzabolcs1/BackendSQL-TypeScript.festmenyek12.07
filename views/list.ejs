@@ -9,7 +9,11 @@
 <body>
     <ul>
         <% for (let p of paintings) { %>
-            <li><%= p.title %></li>
+            <li>
+                <a href="/paintings/<%= p.id %>">
+                    <%= p.title %>
+                </a>
+            </li>
         <% } %>
     </ul>
 </body>

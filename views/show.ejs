@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festmények</title>
+</head>
+<body>
+    <h1 style="text-align: center;">
+        Festmények
+    </h1>
+
+           Festmény neve: 
+
+           <%= painting.title %> <br>
+
+           Készítés dátuma: 
+
+           <%= painting.year %> <br>
+
+           Ki van-e állítva? 
+
+           <% if (painting.on_display == 1) { %>
+            Igen
+           <% } else { %>
+            Nem
+            <% } %>
+    
+
+</body>
+</html>
