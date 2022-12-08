@@ -52,4 +52,17 @@ export class AppController {
   }
 
   
+  @Render('list')
+  deletePaintingForm() {
+    return {};
+  }
+
+  @Post('paintings')
+  async deletePainting(){
+    const [result]: any = await db.execute('DELETE ? FROM paintings WHERE id = ?',
+      [  ]
+    );
+    return {};
+  }
+
 }

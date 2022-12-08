@@ -7,14 +7,17 @@
     <title></title>
 </head>
 <body>
+    <form method="POST">
     <ul>
         <% for (let p of paintings) { %>
-            <li>
-                <a href="/paintings/<%= p.id %>">
+            <li style="margin-bottom: 5px;">
+                <a href="/paintings/<%= p.id %>" >
                     <%= p.title %>
                 </a>
+                <input type="submit" value="Delete" style="width: 50px; height: 20px; font-size: 12px; margin-left: 5px; margin-bottom: 1px;">
             </li>
         <% } %>
     </ul>
+    </form>
 </body>
 </html>
